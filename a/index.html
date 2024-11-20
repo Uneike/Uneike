@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebView Detector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #content {
+      margin-top: 20%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #4CAF50;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <h1>Bem-vindo!</h1>
+    <p id="message"></p>
+  </div>
+  <script>
+    // Check if the site is in a WebView
+    function isWebView() {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      return /wv|WebView|Version\/[\d.]+.*Safari/.test(userAgent);
+    }
+
+    // Extract app name from userAgent
+    function getAppName() {
+      const userAgent = navigator.userAgent;
+      const matches = userAgent.match(/\((.*?)\)/);
+      if (matches && matches[1]) {
+        return matches[1]; // Content inside the parentheses
+      }
+      return "um aplicativo desconhecido";
+    }
+
+    // Display the message
+    function displayMessage() {
+      const messageElement = document.getElementById("message");
+      if (isWebView()) {
+        const appName = getAppName();
+        messageElement.textContent = `Você está visualizando este site em: ${appName}`;
+      } else {
+        messageElement.textContent = "Este site só funciona em um WebView.";
+      }
+    }
+
+    // Run the script
+    displayMessage();
+  </script>
+</body>
+</html>
