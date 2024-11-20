@@ -31,7 +31,6 @@
 </head>
 <body>
   <div id="content">
-    <h1>Bem-vindo!</h1>
     <p id="message"></p>
   </div>
   <script>
@@ -58,7 +57,7 @@
         const appName = getAppName();
         messageElement.textContent = `Você está visualizando este site em: ${appName}`;
       } else {
-        messageElement.textContent = "Este site só funciona em um WebView.";
+        messageElement.textContent = "Access denied, please download the WallPlaces app";
       }
     }
 
